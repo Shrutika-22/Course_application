@@ -1,0 +1,91 @@
+{% include 'Header.html' %}
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<body>
+         <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <div class="card mt-5">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+               <div class="card-header center">
+                <h3>Content and Video</h3>
+               </div>
+               <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9">
+                       {{c.ContentName}}
+                        <div
+                            style="height: 500px;width: 100%;background-color: azure;border: 1px solid gray;text-align: right;">
+                           <video style="height: 500px;width:100%;background-color: azure;border: 1px solid gray;" controls muted>
+                           <source src="{{c.videofile.url}}" />
+                           </video>
+                        </div>
+                   </div>
+                   <div class="col-md-3 ">
+                     <div style="margin-top: 25px;">
+                         <ul class="list-group" style="text-align: right; ">
+                            {% for c in contents %}
+                           
+                               <li class="list-group-item" style="width: fit-content;margin-bottom: 10px; background-color: orange; border-radius: 5px;">
+                                   <a href="/displayvideo?content_id={{c.id}}" style="color:black;">{{c.ContentName}}</a>
+                               </li>
+                               
+                            {% endfor %}
+
+                         </ul>
+                         </div>   
+                   </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Comments</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                         {{comment_form.CommentMessage}}
+                         </div>
+                         <br>
+                         <input type="submit" value="Add comment">
+                         </form>
+                         <hr>
+                           {% for cm in comm %}
+                               <h4> {{cm.User.user_name}}</h4>
+                               <span>{{cm.CommentDate}}</span>
+                               <p>{{cm.CommentMessage}}</p>
+                               </div>
+                               
+                               <li class="list-group-item" style="width: fit-content;margin-bottom: 10px; background-color: orange; border-radius: 5px;">
+                                   <a href="/displaycomments?content_id={{c.cid}}" style="color:black;">{{c.Content}}</a>
+                               </li>
+                               
+                            {% endfor %}
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+               </div>
+               <div class="card-footer">
+                  <a href="/topic" style="color: blue;text-decoration: none;">Back</a>
+               </div>
+               </form>
+            </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+ 
+    {% include 'Footer.html' %}
+
+
+
+
+    

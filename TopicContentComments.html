@@ -1,0 +1,58 @@
+<!-- {% include 'Header.html' %} -->
+
+<body>
+
+  <div class="container" style="padding-top: 15px;">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="card">
+          <div class="card-header" style="text-align:center">
+            <h3>Comments</h3>
+          </div>
+          <div class="card-body">
+            <table>
+              {{tcontentcomment.as_table}}
+            </table>
+          </div>
+          <div class="card-footer">
+            <input type="submit" value="Submit" class="btn btn-primary btn-sm" />
+          </div>
+        </div>
+        </form>
+      </div>
+
+      <!-- <hr> -->
+      <div class="col-md-8 justify-content-center">
+        <table class="table table-bordered ">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Content</th>
+              <th>Comment Date</th>
+              <th>Comment Message</th>
+            </tr>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in TopicContentComments %}
+
+            <tr>
+              <td>{{t.User}}</td>
+              <td>{{t.Content}}</td>
+              <td>{{t.CommentDate}}</td>
+              <td>{{t.CommentMessage}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h4>{{msg}}</h4>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- {% include 'Footer.html' %} -->

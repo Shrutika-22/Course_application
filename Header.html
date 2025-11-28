@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <script src="{% static '/JS/bootstrap.min.js' %}"></script>
+  <script src="{% static '/JS/bootstrap.bundle.min.js' %}"></script>
+</head>
+
+<body style="height: 500px;">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CIIT Institute</a>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+              <a href="/topic" style="color: aliceblue; text-decoration: none;margin-right: 10px;">Topics</a>
+              <a href="/topiccontent" style="color: aliceblue; text-decoration: none; margin-right: 10px;">Content</a>
+              <a href="/topiccontentcomments"
+                style="color: aliceblue; text-decoration: none;margin-right: 10px;">Comments</a>
+            </div>
+          </div>
+          <div class="navbar-nav ms-auto" id="navbarNav">
+            <a href="/register" style="color: aliceblue; text-decoration: none;margin-right: 10px;">Register</a>
+            <a href="/" style="color: aliceblue; text-decoration: none;margin-right: 10px;">Login</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  </nav>

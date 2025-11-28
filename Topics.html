@@ -1,0 +1,52 @@
+{% include 'Header.html' %}
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container" style="text-align:center; padding-top: 15px;">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header" style="text-align:center">
+                            <h3>Topics</h3>
+                        </div>
+                        <div class="card-body">
+                            <table>
+
+                                {{stopic.as_table}}
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <input type="submit" value="Submit" class="btn btn-primary btn-sm" />
+                        </div>
+                    </div>
+                     <h4>{{msg}}</h4>
+                </div>
+                
+
+                <!-- <hr> -->
+                <div class="col-md-8 justify-content-center">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>Topic id</th>
+                                <th>Topic Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in Topicss %}
+
+                            <tr>
+                                <td>{{t.Topic_id}}</td>
+                                <td><a href="/Topicsandrelcontent?topic_id={{t.id}}"
+                                        style="text-decoration: none;color: black;">{{t.Topic_name}}</a></td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+{% include 'Footer.html' %}

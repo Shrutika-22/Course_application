@@ -1,0 +1,55 @@
+{% include 'Header.html' %}
+
+<body>
+    <div class="container" style="padding-top: 15px;">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                  <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="card">
+                    <div class="card-header" style="text-align:center">
+                        <h3>Contents</h3>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            {{tcontent.as_table}}
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+            </div>
+        </form>
+            <!-- <hr> -->
+            <div class="col-md-8 justify-content-center">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>Content Name</th>
+                            <th>Topic</th>
+                            <th>Video</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tc in TopicContent %}
+
+                        <tr>
+                            <td>{{tc.ContentName}}</td>
+                            <td>{{tc.Topic}}</td>
+                            <td>
+                                <video style="height: 100px;width: 150px;" controls muted>
+                                    <source src="{{tc.videofile.url}}" />
+                                </video>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <h4>{{msg}}</h4>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% include 'Footer.html' %}
